@@ -1,0 +1,6 @@
+原始日志：
+2019-08-15 02:53:45 INFO :  logt=2 pub=103 pla=1003 app=2_com.wantu.activity pos=78eb3348a924aa603f20ddf3e9b76b81 style=2 code=3 reqf=90 trif=7_1,13_1 country=usa bud=com.wantu.activity os=2
+...
+
+查看trif有多少个：
+cat  /data/adbin/ad_adx/log/ssp_invalid.log* | grep pla=1003 | awk '{print $13}' | uniq -c| sort
