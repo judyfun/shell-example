@@ -1,0 +1,8 @@
+在执行命令的时候，权限不够，使用sudo也报 Permission denied 这个错误
+例如：
+sudo cat /data/adbin/ad_adx/log/adx.log.wf | grep posid=1002 > posid1002-2019-08-20.txt
+这条命令，sudo只用在的cat命令上，重定向的时候，并没有用上sudo
+解决方案：
+sudo sh -c "
+在命令前加上sh -c ，把命令写作双引号里面，将sudo作用于整条命令
+sudo sh -c "sudo cat /data/adbin/ad_adx/log/adx.log.wf | grep posid=1002 > posid1002-2019-08-20.txt"
