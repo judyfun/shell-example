@@ -1,0 +1,26 @@
+
+[sdk@sdk-server shell]$ cat test.data 
+2 A
+1 B
+4 A
+6 D
+7 C
+3 A
+7 C
+
+##统计 A B C D  出现的个数
+[sdk@sdk-server shell]$ cat test.data | awk '{arr[$2]+=1} END {for (key in arr) print key,arr[key]}'
+A 3
+B 1
+C 2
+D 1
+
+## 统计 A B C D 分组后第一列累加的值
+[sdk@sdk-server shell]$ cat test.data | awk '{arr[$2]+=$1} END {for (key in arr) print key,arr[key]}'
+A 9
+B 1
+C 14
+D 6
+
+在awk初始的时候，定义了一个数组，数组的key就是要统计的那一列的值，如果统计个数，就累加1，如果要是分组统计求和，就累加其他列的值，
+然后遍历完所有的数据后，在END语句中，循环出整个数组即可
