@@ -17,3 +17,8 @@ vim 多行注释
 1，Ctrl+v进入VISUAL BLOCK模式
 2，上下键选中要注释的行
 3，按d删除
+
+vim 撤销
+普通模式下
+u 撤销
+ctrl+r 反撤销
