@@ -6,3 +6,14 @@ sudo cat /data/adbin/ad_adx/log/adx.log.wf | grep posid=1002 > posid1002-2019-08
 sudo sh -c "
 在命令前加上sh -c ，把命令写作双引号里面，将sudo作用于整条命令
 sudo sh -c "sudo cat /data/adbin/ad_adx/log/adx.log.wf | grep posid=1002 > posid1002-2019-08-20.txt"
+
+vim 多行注释
+1，Ctrl+v进入VISUAL BLOCK模式
+2，上下键选中要注释的行
+4，输入注释符号 # 或者 //
+5，按2次 esc返回
+
+反注释
+1，Ctrl+v进入VISUAL BLOCK模式
+2，上下键选中要注释的行
+3，按d删除
