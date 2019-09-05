@@ -24,3 +24,26 @@ D 6
 
 在awk初始的时候，定义了一个数组，数组的key就是要统计的那一列的值，如果统计个数，就累加1，如果要是分组统计求和，就累加其他列的值，
 然后遍历完所有的数据后，在END语句中，循环出整个数组即可for (key in arr) 读取数组的所有下标，即i分别等于A、B、C、D循环赋值
+
+###############
+查找class2.dat 中第一列在class1.dat第一列能找到，但是class2.dat 第二列在class1.dat第二列找不到的数据
+ARGIND 代表awk读取的文件列表序号
+###############
+[sdk@sdk-server shell]$ cat class1.dat 
+lily 89
+jack 74
+leon 65
+marthron 77
+david 81
+rose 90
+[sdk@sdk-server shell]$ cat class2.dat 
+mat 34
+lily 55
+jack 90
+leon 65
+rose 81
+marthron 88
+david 81
+[sdk@sdk-server shell]$ awk  '{if(ARGIND==1) {name1[$1];score1[$2];arr1[$1]=$0} else if (ARGIND==2) {if  (($1 in name1)&&!($2 in score1)) {print "class2->"$0", class1->"arr1[$1] }}}' class1.dat class2.dat 
+class2->lily 55, class1->lily 89
+class2->marthron 88, class1->marthron 77
