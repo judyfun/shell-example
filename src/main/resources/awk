@@ -47,3 +47,8 @@ david 81
 [sdk@sdk-server shell]$ awk  '{if(ARGIND==1) {name1[$1];score1[$2];arr1[$1]=$0} else if (ARGIND==2) {if  (($1 in name1)&&!($2 in score1)) {print "class2->"$0", class1->"arr1[$1] }}}' class1.dat class2.dat 
 class2->lily 55, class1->lily 89
 class2->marthron 88, class1->marthron 77
+
+#################### TODO awk 内置函数
+gsub(r,s)    在整个$0中用s替代r
+gsub(r,s,t)    在整个t中用s替代r
+####################
