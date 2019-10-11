@@ -52,3 +52,18 @@ class2->marthron 88, class1->marthron 77
 gsub(r,s)    在整个$0中用s替代r
 gsub(r,s,t)    在整个t中用s替代r
 ####################
+
+
+awk 多个分隔符
+[root@iZt4n84n0ye9cc7t67vyswZ shell]#  echo "width:720 height:360" | awk '{print $1;print $2}' | awk -F: '{print $2}'
+720
+360
+[root@iZt4n84n0ye9cc7t67vyswZ shell]# echo "width:720 height:360" | awk -F'[ :]' '{print $2,$4}'
+720 360
+
+不过，一般像下面这样写，多一个加号表明将连续出现的记录分隔符当做一个来处理，可以尝试在height前面再增加一个空格
+
+[root@iZt4n84n0ye9cc7t67vyswZ shell]# echo "width:720  height:360" | awk -F'[ :]' '{print $2,$4}'
+720 height
+[root@iZt4n84n0ye9cc7t67vyswZ shell]# echo "width:720  height:360" | awk -F'[ :]+' '{print $2,$4}'
+720 360
